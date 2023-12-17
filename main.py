@@ -1,4 +1,4 @@
-from blackjack_functions import bet, showcards
+from blackjack_functions import showcards
 import random
 
 chips = 100
@@ -39,7 +39,9 @@ while player_input != "exit":
     if roundstart == True:
         print(f"You have {chips} chips")
         player_input = input("How much would you like to bet? ")
-        chips = bet(chips, player_input)
+        chips_bet = player_input
+        chips -= int(chips_bet)
+        print(f"You now have {chips} chips")
         roundstart = False
 
         for i in range(0,2):
@@ -99,4 +101,37 @@ while player_input != "exit":
                     player_value = 0
                     dealer_value = 0
                     roundstart = True
-            
+    elif player_input == "stand":
+            while dealer_value < 16 or dealer_value <= player_value:                
+                for i in range(0,1):
+                    random_key, random_value = random.choice(list(cards.items()))
+                    dealer_cards.append(random_key)
+                    dealer_value += random_value
+                    showcards(player_cards, player_value, dealer_cards, dealer_value)
+            if dealer_value > 21:                    
+                    chips += chips_bet*2
+                    print(f"You win!\n You now have {chips} chips!")
+                    player_cards = []
+                    dealer_cards = []
+                    player_value = 0
+                    dealer_value = 0
+                    roundstart = True
+            else:
+                player_input = input()
+                try:
+                    if player_input.lower() == "n":
+                        print("Thanks for playing!")
+                        break
+                    elif player_input.lower() == "y":
+                        if chips <= 0:
+                            print("You dont have the chips to play again!")
+                            break
+                        else:
+                            player_cards = []
+                            dealer_cards = []
+                            player_value = 0
+                            dealer_value = 0
+                            roundstart = True
+                except:
+                    print("Thats not a yes or no input! Try again")
+
