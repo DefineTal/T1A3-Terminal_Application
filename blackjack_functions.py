@@ -2,6 +2,7 @@ import random
 
 
 def bet(chips, player_input):
+    global chips_bet
     chips_bet = player_input
     chips -= int(chips_bet)
     print(f"You now have {chips} chips")
