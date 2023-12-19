@@ -24,7 +24,7 @@ cards = {
     "Three" : 3,
     "Two" : 2
     }
-
+   
 def show_cards():
     print(f"Your cards are: {player_cards}")
     print(f"Your total value is: {player_value}\n")
@@ -47,6 +47,38 @@ def deal_cards(personcards, personvalue, x):
         personvalue += random_value
     return personvalue
 
+def bet(player_input,chips):
+    chips_bet = int(player_input)
+    chips -= chips_bet
+    return chips, chips_bet
+
+def player_win():
+    global chips
+    chips += chips_bet*2
+    print(f"You Win!\nYou now have {chips} chips!")  
+
+def player_lose():
+    print("You lose this round! Do you wanna play again? y/n?")
+    while True:
+        player_input = input()
+        try:
+            if  player_input not in ["y", "n"]:
+                raise ValueError()
+                
+            elif player_input == "n":
+                print("Thanks for playing!")
+                exit()
+
+            elif player_input == "y":
+                if chips <= 0:
+                    print("You dont have the chips to play again!")
+                    break
+                else:
+                    reset_round()
+                    break 
+
+        except ValueError:
+            print("Thats not a yes or no input! Try again")
 
 
 prompt = "Please enter your name: "
@@ -63,9 +95,8 @@ while player_input != "exit":
     if roundstart == True:
         print(f"You have {chips} chips")
         player_input = input("How much would you like to bet? ")
-        chips_bet = player_input
-        chips -= int(chips_bet)
-        print(f"You now have {chips} chips")
+        chips, chips_bet = bet(player_input,chips)
+        print(f"You now have {chips} chips\n")
         roundstart = False
         player_value = deal_cards(player_cards, player_value, 2)
         dealer_value = deal_cards(dealer_cards, dealer_value, 2)
@@ -80,52 +111,45 @@ while player_input != "exit":
 
         if player_value > BLACKJACK:
             show_cards()
-            print("You lose this round! Do you wanna play again? y/n?")
-            player_input = input()
-            try:
-                if player_input.lower() == "n":
-                    print("Thanks for playing!")
-                    break
-                elif player_input.lower() == "y":
-                    if chips <= 0:
-                        print("You dont have the chips to play again!")
-                        break
-                    else:
-                        reset_round()        
-            except:
-                print("Thats not a yes or no input! Try again")
+            print(f"You now have {chips} chips.")
+            player_lose()
+
 
         elif player_value <= BLACKJACK:
             show_cards()
             if dealer_value < 16:
                 dealer_value = deal_cards(dealer_cards, dealer_value, 1)
                 if dealer_value > 21:
-                    chips += int(chips_bet*2)
-                    print(f"You win!\n You now have {chips} chips!")
-                    resetround()
+                    player_win()
+                    reset_round()
+            else:
+                print("The dealer stands!")
             
     elif player_input == "stand":
         while dealer_value < 16 or dealer_value <= player_value:                
-                dealer_value = deal_cards(dealer_cards, dealer_value, 1)
-                show_cards()
+            dealer_value = deal_cards(dealer_cards, dealer_value, 1)
+            show_cards()
             
-        if dealer_value > BLACKJACK:                    
-                chips += int(chips_bet)*2
-                print(f"You win!\nYou now have {chips} chips!")
-                reset_round()
-        else:
-            player_input = input()
-            try:
-                if player_input.lower() == "n":
-                    print("Thanks for playing!")
-                    break
+        if dealer_value > BLACKJACK:                                 
+            player_win()
+            reset_round()
 
-                elif player_input.lower() == "y":
-                    if chips <= 0:
-                        print("You dont have the chips to play again!")
-                        break
-                    else:
-                        reset_round()
-            except:
-                print("Thats not a yes or no input! Try again")
+        elif dealer_value == player_value:
+            chips += chips_bet
+            print("Its a draw! You get your chips")
+
+        else:
+            print(f"You now have {chips} chips.")
+            player_lose()
+ 
+    if player_input == "surrender":  
+        if len(player_cards) == 2:
+            chips += chips_bet/2
+            print("You have surrendered and have got half your betted chips back!")
+            print(f"You now have {chips} chips")
+            player_lose()
+                
+        else:
+            print("You can only surrender on the first round of a hand!")
+
 
