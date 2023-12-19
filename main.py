@@ -48,9 +48,19 @@ def deal_cards(personcards, personvalue, x):
     return personvalue
 
 def bet(player_input,chips):
-    chips_bet = int(player_input)
-    chips -= chips_bet
-    return chips, chips_bet
+    while True:
+        try:
+            if player_input == "exit":
+                print("Thanks for playing")
+                exit()
+            chips_bet = int(player_input)
+            if chips_bet > chips:
+                raise ValueError("Cant bet chips ya dont have!")
+            chips -= chips_bet
+            return chips, chips_bet
+        except ValueError:
+            print("Thats not a valid input!")
+            player_input = input("Please try Again! ")
 
 def player_win():
     global chips
@@ -62,7 +72,7 @@ def player_lose():
     while True:
         player_input = input()
         try:
-            if  player_input not in ["y", "n"]:
+            if player_input not in ["y", "n"]:
                 raise ValueError()
                 
             elif player_input == "n":
@@ -124,6 +134,9 @@ while player_input != "exit":
                     reset_round()
             else:
                 print("The dealer stands!")
+        
+        else:
+            print("The dealer stands!")
             
     elif player_input == "stand":
         while dealer_value < 16 or dealer_value <= player_value:                
