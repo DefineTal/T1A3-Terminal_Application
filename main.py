@@ -1,4 +1,4 @@
-import random
+import random, csv
 from rich import print
 from emoji import emojize
 
