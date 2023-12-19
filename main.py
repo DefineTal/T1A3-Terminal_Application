@@ -1,5 +1,6 @@
 import random
 
+# Initialising Variables
 chips = 100
 chips_bet = 0
 roundstart = True
@@ -24,19 +25,20 @@ cards = {
     "Three" : 3,
     "Two" : 2
     }
+# Error class made for the surrender 'elif' block
 class SurrenderError(Exception):
     pass
-
+# Error class made to catch negative bets
 class NegativeBet(Exception):
     pass
-   
+# Function to show dealer and player value and cards
 def show_cards():
     print(f"Your cards are: {player_cards}")
     print(f"Your total value is: {player_value}\n")
     
     print(f"Dealers cards are: {dealer_cards}")
     print(f"Dealer total value is: {dealer_value}\n")
-
+# Function to reset variables after a hand is finished
 def reset_round():
     global player_cards, dealer_cards, player_value, dealer_value, roundstart
     player_cards = []
@@ -44,14 +46,14 @@ def reset_round():
     player_value = 0
     dealer_value = 0
     roundstart = True
-
+# Function to deal cards to player or dealer
 def deal_cards(personcards, personvalue, x):
     for i in range(0,x):
         random_key, random_value = random.choice(list(cards.items()))
         personcards.append(random_key)
         personvalue += random_value
     return personvalue
-
+# Function to determine the value of the chips and chips_bet variables
 def bet(player_input,chips):
     while True:
         try:
@@ -70,12 +72,12 @@ def bet(player_input,chips):
         except NegativeBet as e:
             print(e)
             player_input = input("Please try Again! ")
-
+# Function for when player wins
 def player_win():
     global chips
     chips += chips_bet*2
     print(f"You Win!\nYou now have {chips} chips!")  
-
+# Function for when player loses
 def player_lose():
     print("You lose this round! Do you wanna play again? y/n?")
     while True:
@@ -97,24 +99,27 @@ def player_lose():
 
         except ValueError:
             print("Thats not a yes or no input! Try again")
-
+# Function when called exits the game gracefully
 def exit_game():
-    print("Thanks for playing")
+    print("\nThanks for playing!")
+    print("PROGRAM WILL NOW CLOSE")
     exit()
 
-
+# Text intro
 prompt = "Please enter your name: "
 rules = "Your aim is to be closer to the number 21 with the dealt cards then the dealer. As the player you have the option to 'hit', to gain an extra card, 'stand' to keep ur value as is and end the round, 'surrender', to gain back half of the betted chips and lose the round. The value of the cards are: "
 
 print(prompt)
+# Determines player name
 player_name = str(input())
 print(f"Hello {player_name}! Welcome to the Blackjack Casino!")
 print(rules, cards)
 
 input("Press 'Enter' to continue! ")
 player_input = ""
+# Main game loop
 while True:
-
+    # if statement that is only active on hand start
     if roundstart == True:
         print(f"You have {chips} chips")
         player_input = input("How much would you like to bet? ")
@@ -126,6 +131,7 @@ while True:
     
     show_cards()
     player_input = input("Would you like to hit, stand or surrender? ")
+    # try block with exceptions to catch invalid inputs that do not match the designated inputs
     try:
         if player_input.lower() == "hit":
 
@@ -168,6 +174,7 @@ while True:
                 player_lose()
     
         elif player_input == "surrender":
+            # Try block to catch is player is tryin to surrender after initial action
             try:
                 if len(player_cards) == 2:
                     chips += chips_bet/2
@@ -189,5 +196,3 @@ while True:
         print("Please Enter: Hit, Stand or Surrender\n")
 
 exit_game()
-
-
