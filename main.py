@@ -26,6 +26,9 @@ cards = {
     }
 class SurrenderError(Exception):
     pass
+
+class NegativeBet(Exception):
+    pass
    
 def show_cards():
     print(f"Your cards are: {player_cards}")
@@ -53,15 +56,19 @@ def bet(player_input,chips):
     while True:
         try:
             if player_input == "exit":
-                print("Thanks for playing")
-                exit()
+                exit_game()
             chips_bet = int(player_input)
-            if chips_bet > chips:
+            if chips_bet < 0:
+                raise NegativeBet("Cant bet negative chips!")
+            elif chips_bet > chips:
                 raise ValueError("Cant bet chips ya dont have!")
             chips -= chips_bet
             return chips, chips_bet
         except ValueError:
             print("Thats not a valid input!")
+            player_input = input("Please try Again! ")
+        except NegativeBet as e:
+            print(e)
             player_input = input("Please try Again! ")
 
 def player_win():
@@ -78,8 +85,7 @@ def player_lose():
                 raise ValueError()
                 
             elif player_input == "n":
-                print("Thanks for playing!")
-                exit()
+                exit_game()
 
             elif player_input == "y":
                 if chips <= 0:
@@ -91,6 +97,10 @@ def player_lose():
 
         except ValueError:
             print("Thats not a yes or no input! Try again")
+
+def exit_game():
+    print("Thanks for playing")
+    exit()
 
 
 prompt = "Please enter your name: "
@@ -176,9 +186,8 @@ while True:
         else:
             raise ValueError
     except ValueError:
-        print("Please Enter: Hit, Stand of Surrender")
+        print("Please Enter: Hit, Stand or Surrender\n")
 
-rint("Game will now close")
-exit()
+exit_game()
 
 
