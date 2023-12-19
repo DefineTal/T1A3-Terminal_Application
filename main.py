@@ -24,6 +24,8 @@ cards = {
     "Three" : 3,
     "Two" : 2
     }
+class SurrenderError(Exception):
+    pass
    
 def show_cards():
     print(f"Your cards are: {player_cards}")
@@ -101,7 +103,8 @@ print(rules, cards)
 
 input("Press 'Enter' to continue! ")
 player_input = ""
-while player_input != "exit":
+while True:
+
     if roundstart == True:
         print(f"You have {chips} chips")
         player_input = input("How much would you like to bet? ")
@@ -112,57 +115,70 @@ while player_input != "exit":
         dealer_value = deal_cards(dealer_cards, dealer_value, 2)
     
     show_cards()
+    player_input = input("Would you like to hit, stand or surrender? ")
+    try:
+        if player_input.lower() == "hit":
 
-    player_input = input("Would you like to hit or stand? ")
+            player_value = deal_cards(player_cards, player_value, 1)
 
-    if player_input.lower() == "hit":
-
-        player_value = deal_cards(player_cards, player_value, 1)
-
-        if player_value > BLACKJACK:
-            show_cards()
-            print(f"You now have {chips} chips.")
-            player_lose()
+            if player_value > BLACKJACK:
+                show_cards()
+                print(f"You now have {chips} chips.")
+                player_lose()
 
 
-        elif player_value <= BLACKJACK:
-            show_cards()
-            if dealer_value < 16:
-                dealer_value = deal_cards(dealer_cards, dealer_value, 1)
-                if dealer_value > 21:
-                    player_win()
-                    reset_round()
+            elif player_value <= BLACKJACK:
+                show_cards()
+                if dealer_value < 16:
+                    dealer_value = deal_cards(dealer_cards, dealer_value, 1)
+                    if dealer_value > 21:
+                        player_win()
+                        reset_round()
+                else:
+                    print("The dealer stands!")
+            
             else:
                 print("The dealer stands!")
-        
-        else:
-            print("The dealer stands!")
-            
-    elif player_input == "stand":
-        while dealer_value < 16 or dealer_value <= player_value:                
-            dealer_value = deal_cards(dealer_cards, dealer_value, 1)
-            show_cards()
-            
-        if dealer_value > BLACKJACK:                                 
-            player_win()
-            reset_round()
-
-        elif dealer_value == player_value:
-            chips += chips_bet
-            print("Its a draw! You get your chips")
-
-        else:
-            print(f"You now have {chips} chips.")
-            player_lose()
- 
-    if player_input == "surrender":  
-        if len(player_cards) == 2:
-            chips += chips_bet/2
-            print("You have surrendered and have got half your betted chips back!")
-            print(f"You now have {chips} chips")
-            player_lose()
                 
+        elif player_input == "stand":
+            while dealer_value < 16 or dealer_value <= player_value:                
+                dealer_value = deal_cards(dealer_cards, dealer_value, 1)
+                show_cards()
+                
+            if dealer_value > BLACKJACK:                                 
+                player_win()
+                reset_round()
+
+            elif dealer_value == player_value:
+                chips += chips_bet
+                print("Its a draw! You get your chips")
+
+            else:
+                print(f"You now have {chips} chips.")
+                player_lose()
+    
+        elif player_input == "surrender":
+            try:
+                if len(player_cards) == 2:
+                    chips += chips_bet/2
+                    print("You have surrendered and have got half your betted chips back!")
+                    print(f"You now have {chips} chips")
+                    player_lose()
+                else:
+                    raise SurrenderError
+                    
+            except SurrenderError:
+                print("You can only surrender on the first round of a hand!")
+
+        elif player_input == "exit":
+            break
+
         else:
-            print("You can only surrender on the first round of a hand!")
+            raise ValueError
+    except ValueError:
+        print("Please Enter: Hit, Stand of Surrender")
+
+rint("Game will now close")
+exit()
 
 
