@@ -1,5 +1,5 @@
 import pytest
-from functions_under_test import deal_cards, bet
+from functions_under_test import deal_cards, bet, exit_game
 
 def test_deal_cards_value():
     personcards = []
@@ -14,7 +14,7 @@ def test_deal_cards_cards():
     personvalue = 0
     x = 2
     personvalue = deal_cards(personcards, personvalue, x)
-    # Expected result is a fail as the len of cards should be 2
+    # Expected result is a fail as the len of cards should be 2 and not 3. 
     assert len(personcards) == 3
 
 def test_bet():
@@ -23,3 +23,4 @@ def test_bet():
     chips, chips_bet = bet(player_input, chips)
     # Expected result is pass as player input and chips bet value should be the same and input should be taken from chips value
     assert chips == 70 and chips_bet == 30
+    
