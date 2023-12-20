@@ -95,7 +95,7 @@ def player_lose():
             elif player_input == "y":
                 if chips <= 0:
                     print("You dont have the chips to play again!")
-                    break
+                    exit_game()
                 else:
                     reset_round()
                     break 
