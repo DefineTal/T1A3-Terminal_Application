@@ -13,7 +13,7 @@ player_cards = []
 dealer_value = 0
 dealer_cards = []
 BLACKJACK = 21
-cards = {
+CARDS = {
     "Ace11": 11,
     "Ace1": 1,
     "King": 10,
@@ -62,7 +62,7 @@ def reset_round():
 # Function to deal cards to player or dealer
 def deal_cards(personcards, personvalue, x):
     for i in range(0, x):
-        random_key, random_value = random.choice(list(cards.items()))
+        random_key, random_value = random.choice(list(CARDS.items()))
         personcards.append(random_key)
         personvalue += random_value
     return personvalue
@@ -142,7 +142,7 @@ print(prompt)
 # Determines player name
 player_name = str(input())
 print(f"Hello {player_name}! Welcome to the Blackjack Casino!")
-print(rules, cards)
+print(rules, CARDS)
 
 input("Press 'Enter' to continue! ")
 player_input = ""
