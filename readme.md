@@ -295,6 +295,11 @@ As specified before the entire game is played through the command line using key
 - 1.6GHz or faster processor
 - 1GB Ram
 
+## Dependencies
+- emoji package
+- rich package
+- random package
+
 # Project Management
 When looking for resources to do project management alot of websites used a kanban layout. Personally I found kanban layout a bit hard to read. I found a website called 'height' that allowed for 4 serpate views; Spreadsheet, Kanban, Calender and Gantt. 'height also allows me to export the project as seen as a csv and allows me to give other people access to the project. The CSV import and some associated screenshots are the main way I decided to prove use of project management being used throught the creation of the app.
 ### Screenshots
