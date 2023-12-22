@@ -178,3 +178,83 @@ class SurrenderError(Exception):
 
 ## Summary of pep8
 Overall pep8 can be *mostly* followed when coding naturally and without thinking too hard about it. But when fixing up code to match the style guide perfectly as well as looking over the style guide. Pep8 can be incredibly finicky and unintuative when it comes to more advanced stuff. For instance the pep8 style guide prefers tab to not be used and instead indentation should be done manually with spaces. Which I am sure serves some purpose, personally it just seems unintuitive. Going forward for different projects I will do research into different styling guides to find one that makes more sense to me.
+
+# Features
+
+The App has many different features that allow users to interact with the app within the terminal window.
+## Main Game loop
+Within the main game loop the app has 4 main features. In the loop the user will be prompted with different options about how they should go about progressing. Within the loop the user is able to exit the game at any time by inputing the 'exit' into the prompt. If a user inputs a invalid input such as a number or a word that isnt recognised it will bring an up and error message asking for the user to try again. 
+
+### Bet
+At the begining of hand the user is shown how many chips they currently have and asks them to bet an amount of chips on them wining the hand. If users try to bet negative chips a custom error is raised, if they try to be more chips then they currently have or enter a invalid input a value error is raised. A when loop is utilised so that users can try again after an error has been raised. The feature itself is mostly contained within the bet function.
+
+#### Function:
+```python
+# Function to determine the value of the chips and chips_bet variables
+def bet(player_input, chips):
+    while True:
+        try:
+            if player_input == "exit":
+                exit_game()
+            chips_bet = int(player_input)
+            if chips_bet < 0:
+                raise NegativeBet("Cant bet negative chips!")
+            elif chips_bet > chips:
+                raise ValueError("Cant bet chips ya dont have!")
+            chips -= chips_bet
+            return chips, chips_bet
+        except ValueError:
+            print("Thats not a valid input!")
+            player_input = input("Please try Again! ")
+        except NegativeBet as e:
+            print(e)
+            player_input = input("Please try Again! ")
+```
+#### Custom Error Class:
+```python
+# Error class made to catch negative bets
+class NegativeBet(Exception):
+    pass
+```
+
+### Hit
+This feature will most likely be the most used. It allows the user to make the decision to 'hit' this 'deals' the player an extra card to increase their value. The feature uses the CARDS variable as its source and uses a loop to simulate cards being dealt as they would in a usual deck.The feature itself is containted within the deal_cards function and is used to deal the initial two cards for the player and the dealer as well as being used for the hit feature. This feature can be used when the player is asked to 'hit', 'stand' or 'surrender', and can be called upon when typing 'hit' into the prompt
+
+```python
+# Function to deal cards to player or dealer
+def deal_cards(personcards, personvalue, x):
+    for i in range(0, x):
+        random_key, random_value = random.choice(list(CARDS.items()))
+        personcards.append(random_key)
+        personvalue += random_value
+    return personvalue
+```
+
+### Stand
+The 'stand' feature allows the user the user to sit on their value and cards, but also prohibits them making any further actions within the hand. This feature gives the user an extra layer of strategy when playing, as they can decide to sit on some values and hope the dealer cant beat it and bust rather then just hit and bust themselves. This feature can be used when the player is asked to 'hit', 'stand' or 'surrender', and can be called upon when typing 'stand' into the prompt.
+
+### Surrender
+The 'surrender' feature allows user to surrender on the first action of a hand. This feature is used when users believe they have been dealt an incrdibly bad hand or the dealer an incredibly good hand. It allows users to purposly 'lose' the round to get half of their betted chips back. If user trys to surrender on rounds apart from the first  it will check for how many cards in hand and raise a custom error if the user has more then 2 cards.
+
+#### Surrender block:
+```python
+        elif player_input == "surrender":
+            # Try block to catch surrender input after initial round
+            try:
+                if len(player_cards) == 2:
+                    chips += chips_bet/2
+                    print("You have surrendered!")
+                    print(f"You now have {chips} chips")
+                    player_lose()
+                else:
+                    raise SurrenderError
+
+            except SurrenderError:
+                print("You can only surrender on the first round of a hand!")
+```
+#### Custom Error Class:
+```python
+# Error class made for the surrender 'elif' block
+class SurrenderError(Exception):
+    pass
+```
