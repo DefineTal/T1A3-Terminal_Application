@@ -258,3 +258,5 @@ The 'surrender' feature allows user to surrender on the first action of a hand. 
 class SurrenderError(Exception):
     pass
 ```
+## Dealer Logic Feature
+When playing blackjack at a casino you are against the dealer and the dealer has to abide by a strict set of rules for their decision making so that the casino can have the highest profit margin as possible. I wanted to emulate this to a degree to get. Whenever a player makes a decision the 'dealer' will run through a bunch of 'if' statements to determine its next move. With using normal casino dealer rules it allowed me to get a basic idea on how to go about coding it. The basic logic the dealer runs by is that if its value is less then 16 or lower then the players value it will 'hit' and gain an extra card. If the dealer value is greater 16 the dealer will keep its value waitin for another action by the player. Adding a feature like this and personifying it creates a way more engaging and exciting experience for the user and gives alot of replayability.
