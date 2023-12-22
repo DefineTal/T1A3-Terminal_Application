@@ -278,6 +278,19 @@ Blackjack is a casino game where your aim is to be closer to the number 21, blac
 ## Steps To Install
 The src code comes with 3 seperate bash files 2 for depending on you operating system and a third that named 'make_exe.sh' that creates an exe located in the folder dist that the bash file creates. For the other bash files; Open VS code in the directory where they are located type in 'sh run_blackjack_windows.sh' or 'sh run_blackjack_mac.sh' depending on your OS and the bash script will run and install all the needed packages from the 'requirements.txt' file and will run within the terminal on vscode.
 
+
+## Commands
+As specified before the entire game is played through the command line using keyboard input for words that are prompted by the app. The main commands are:
+
+- Hit for main game loop
+- Stand for main game loop  
+- Surrender for main game loop
+- y for play again input
+- n for play again input
+- exit to quit the app
+- name input
+- bet input
+
 ## System Requirements
 - 1.6GHz or faster processor
 - 1GB Ram
