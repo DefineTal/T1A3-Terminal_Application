@@ -1,8 +1,8 @@
 # Blackjack Terminal App Overview
-The aim of the this application is exhibit my skills as a python programmer by implementing different features in the app and to use a wide range of developer tools to assist in consutruction and implementation of the app.
+The aim of the this application is exhibit my skills as a python programmer by implementing different features in the app and to use a wide range of developer tools to assist in construction and implementation of the app.
 
 # Code Style Guide
-The coding style I abided by was Pep8 as it was the most similiar styling convention to what was used in class. When doing research into pep8 I had came across a rescource known as flake8 which points out code pep8 errors within the code and specifies the line. Initialing I was overwhelemed with the errors as there were so many:
+The coding style I abided by was Pep8 as it was the most similar styling convention to what was used in class. When doing research into pep8 I had came across a resource known as flake8 which points out code pep8 errors within the code and specifies the line. Initialing I was overwhelmed with the errors as there were so many:
 
 ## Errors
 ```
@@ -55,7 +55,7 @@ main.py:189:1: W293 blank line contains whitespace
 main.py:201:12: W292 no newline at end of file
 ```
 
-When looking through these errors I noticed I had made alot of mistakes but alot of theses mistakes happened continusly through my code and the variety of the errors was quite low. The first main error was 203, this error showed up 14 lines in a row and pointed to my dictionary variable called cards. The varaible did not abide by the pep8 guidelines as I had a space before and after the ":" seperating the *true value pairs*.
+When looking through these errors I noticed I had made a lot of mistakes but a lot of theses mistakes happened continuously through my code and the variety of the errors was quite low. The first main error was 203, this error showed up 14 lines in a row and pointed to my dictionary variable called cards. The variable did not abide by the pep8 guidelines as I had a space before and after the ":" separating the *true value pairs*.
 
 ---
 #### Before:
@@ -68,7 +68,7 @@ When looking through these errors I noticed I had made alot of mistakes but alot
     "Ace11": 11,
 ```
 ---
-E302 was the next constant appearing error and was to do with lacking blank lines between declared functions and classes. The change noticably increased readability of the code
+E302 was the next constant appearing error and was to do with lacking blank lines between declared functions and classes. The change noticeably increased readability of the code
 
 ---
 #### Before:
@@ -110,9 +110,9 @@ def reset_round():
     roundstart = True
 ```
 ---
-The errors w293 and w291 are both erros thats point to random whitespace either on blank lines(w93) or trailing whitespace afer written code(w91). Initially when fixing up white space errors I wondered what the point of it was. It didnt seem to hurt the readability of the code at all or really do anything. After doing some googling I definitely wasnt the only one who was confused, but a few *possible* answers came of the search. The main answer I liked was found on a forum about how it messes with text editors and compared it to how if your focusing on something and then someone inturupts you it messes with your focus. A few other answers included messing the compilers causing them to skip lines and programs taking up more space as the whitepace is considered a character.
+The errors w293 and w291 are both errors thats point to random whitespace either on blank lines(w93) or trailing whitespace after written code(w91). Initially when fixing up white space errors I wondered what the point of it was. It didn't seem to hurt the readability of the code at all or really do anything. After doing some googling I definitely wasn't the only one who was confused, but a few *possible* answers came of the search. The main answer I liked was found on a forum about how it messes with text editors and compared it to how if your focusing on something and then someone interrupts you it messes with your focus. A few other answers included messing the compilers causing them to skip lines and programs taking up more space as the whitespace is considered a character.
 
-e501 is an error code that points to lines of code that are too long. The main reason why long code is a bad thing is alot of people code with a preview up or a code checker on the other half of their screen. If code is too long it makes this a bit more difficult. Personally I had used a few longer lines of code the biggest grievance against this guidline was on the prompt variable on line 132 now or 113 back then coming in at a whopping 361 characters, four and a half times the reccommeneded 79 characters per line.
+e501 is an error code that points to lines of code that are too long. The main reason why long code is a bad thing is a lot of people code with a preview up or a code checker on the other half of their screen. If code is too long it makes this a bit more difficult. Personally I had used a few longer lines of code the biggest grievance against this guideline was on the prompt variable on line 132 now or 113 back then coming in at a whopping 361 characters, four and a half times the recommended 79 characters per line.
 
 ---
 
@@ -131,7 +131,7 @@ rules = ("Your aim is to be closer to the number 21,"
         "to gain back half of the betted chips and lose the round."
         "The value of the cards are: ")
 ```
-E712 focused on the wording used in an if true statement. The specific example initially had the the equality idenitifer (==) and was checking if the variable 'round start' was equal to true. Pep8 doesnt like this and preferes the 'is' comparison singleton. This way of avoids potential issues in regards to object ident.ity
+E712 focused on the wording used in an if true statement. The specific example initially had the the equality identifier (==) and was checking if the variable 'round start' was equal to true. Pep8 doesn't like this and prefers the 'is' comparison singleton. This way of avoids potential issues in regards to object ident.ity
 
 ---
 
@@ -149,13 +149,13 @@ E231 is an error regarding me missing a space after a comma. Usually I do this a
 
 E303 is flagged is I leave too many blank lines between statements of code. Keeping a consistent number of lines improves the readability of code immensely.
 
-W292 much like its brother W291 and W293 confused me on why it reccommonded by the pep8 styling guide. After some quick searching I had found out that within the UNIX and Linux ecosystem it expects text files to end in a newline. This convetion is still used today and the reason why pep8 reccomends it.
+W292 much like its brother W291 and W293 confused me on why it recommended by the pep8 styling guide. After some quick searching I had found out that within the UNIX and Linux ecosystem it expects text files to end in a newline. This convention is still used today and the reason why pep8 recommended it.
 
 
 
 
 ## Naming
-The general naming convention used throughout the code is in-line with the pep8 style guide. In the guide it says for functions and variable names to use lowercase with words being seperated with underscores. The only time when this can be broken is when declaring constants; variables that cannot be changed. The convention used when declaring constants is uppercase with words being seperatated with underscores. When naming classes the style guide says to use CamelCase.
+The general naming convention used throughout the code is in-line with the pep8 style guide. In the guide it says for functions and variable names to use lowercase with words being separated with underscores. The only time when this can be broken is when declaring constants; variables that cannot be changed. The convention used when declaring constants is uppercase with words being separated with underscores. When naming classes the style guide says to use CamelCase.
 
 ---
 #### Variable
@@ -177,16 +177,16 @@ class SurrenderError(Exception):
 ---
 
 ## Summary of pep8
-Overall pep8 can be *mostly* followed when coding naturally and without thinking too hard about it. But when fixing up code to match the style guide perfectly as well as looking over the style guide. Pep8 can be incredibly finicky and unintuative when it comes to more advanced stuff. For instance the pep8 style guide prefers tab to not be used and instead indentation should be done manually with spaces. Which I am sure serves some purpose, personally it just seems unintuitive. Going forward for different projects I will do research into different styling guides to find one that makes more sense to me.
+Overall pep8 can be *mostly* followed when coding naturally and without thinking too hard about it. But when fixing up code to match the style guide perfectly as well as looking over the style guide. Pep8 can be incredibly finicky and unintuitive when it comes to more advanced stuff. For instance the pep8 style guide prefers tab to not be used and instead indentation should be done manually with spaces. Which I am sure serves some purpose, personally it just seems unintuitive. Going forward for different projects I will do research into different styling guides to find one that makes more sense to me.
 
 # Features
 
 The App has many different features that allow users to interact with the app within the terminal window.
 ## Main Game loop
-Within the main game loop the app has 4 main features. In the loop the user will be prompted with different options about how they should go about progressing. Within the loop the user is able to exit the game at any time by inputing the 'exit' into the prompt. If a user inputs a invalid input such as a number or a word that isnt recognised it will bring an up and error message asking for the user to try again. 
+Within the main game loop the app has 4 main features. In the loop the user will be prompted with different options about how they should go about progressing. Within the loop the user is able to exit the game at any time by inputing the word 'exit' into the prompt. If a user inputs a invalid input such as a number or a word that isn't recognized it will bring an up and error message asking for the user to try again. 
 
 ### Bet
-At the begining of hand the user is shown how many chips they currently have and asks them to bet an amount of chips on them wining the hand. If users try to bet negative chips a custom error is raised, if they try to be more chips then they currently have or enter a invalid input a value error is raised. A when loop is utilised so that users can try again after an error has been raised. The feature itself is mostly contained within the bet function.
+At the beginning of the hand the user is shown how many chips they currently have and asks them to bet an amount of chips on them wining the hand. If users try to bet negative chips a custom error is raised, if they try to be more chips then they currently have or enter a invalid input a value error is raised. A when loop is utilized so that users can try again after an error has been raised. The feature itself is mostly contained within the bet function.
 
 #### Function:
 ```python
@@ -218,7 +218,7 @@ class NegativeBet(Exception):
 ```
 
 ### Hit
-This feature will most likely be the most used. It allows the user to make the decision to 'hit' this 'deals' the player an extra card to increase their value. The feature uses the CARDS variable as its source and uses a loop to simulate cards being dealt as they would in a usual deck.The feature itself is containted within the deal_cards function and is used to deal the initial two cards for the player and the dealer as well as being used for the hit feature. This feature can be used when the player is asked to 'hit', 'stand' or 'surrender', and can be called upon when typing 'hit' into the prompt
+This feature will most likely be the most used. It allows the user to make the decision to 'hit' this 'deals' the player an extra card to increase their value. The feature uses the CARDS variable as its source and uses a loop to simulate cards being dealt as they would in a usual deck.The feature itself is contained within the deal_cards function and is used to deal the initial two cards for the player and the dealer as well as being used for the hit feature. This feature can be used when the player is asked to 'hit', 'stand' or 'surrender', and can be called upon when typing 'hit' into the prompt
 
 ```python
 # Function to deal cards to player or dealer
@@ -234,7 +234,7 @@ def deal_cards(personcards, personvalue, x):
 The 'stand' feature allows the user the user to sit on their value and cards, but also prohibits them making any further actions within the hand. This feature gives the user an extra layer of strategy when playing, as they can decide to sit on some values and hope the dealer cant beat it and bust rather then just hit and bust themselves. This feature can be used when the player is asked to 'hit', 'stand' or 'surrender', and can be called upon when typing 'stand' into the prompt.
 
 ### Surrender
-The 'surrender' feature allows user to surrender on the first action of a hand. This feature is used when users believe they have been dealt an incrdibly bad hand or the dealer an incredibly good hand. It allows users to purposly 'lose' the round to get half of their betted chips back. If user trys to surrender on rounds apart from the first  it will check for how many cards in hand and raise a custom error if the user has more then 2 cards.
+The 'surrender' feature allows user to surrender on the first action of a hand. This feature is used when users believe they have been dealt an incredibly bad hand or the dealer an incredibly good hand. It allows users to purposely 'lose' the round to get half of their betted chips back. If user tries to surrender on rounds apart from the first  it will check for how many cards in hand and raise a custom error if the user has more then 2 cards.
 
 #### Surrender block:
 ```python
@@ -259,24 +259,24 @@ class SurrenderError(Exception):
     pass
 ```
 ## Dealer Logic Feature
-When playing blackjack at a casino you are against the dealer and the dealer has to abide by a strict set of rules for their decision making so that the casino can have the highest profit margin as possible. I wanted to emulate this to a degree to get. Whenever a player makes a decision the 'dealer' will run through a bunch of 'if' statements to determine its next move. With using normal casino dealer rules it allowed me to get a basic idea on how to go about coding it. The basic logic the dealer runs by is that if its value is less then 16 or lower then the players value it will 'hit' and gain an extra card. If the dealer value is greater 16 the dealer will keep its value waitin for another action by the player. Adding a feature like this and personifying it creates a way more engaging and exciting experience for the user and gives alot of replayability.
+When playing blackjack at a casino you are against the dealer and the dealer has to abide by a strict set of rules for their decision making so that the casino can have the highest profit margin as possible. I wanted to emulate this to a degree to get. Whenever a player makes a decision the 'dealer' will run through a bunch of 'if' statements to determine its next move. With using normal casino dealer rules it allowed me to get a basic idea on how to go about coding it. The basic logic the dealer runs by is that if its value is less then 16 or lower then the players value it will 'hit' and gain an extra card. If the dealer value is greater 16 the dealer will keep its value waiting for another action by the player. Adding a feature like this and personifying it creates a way more engaging and exciting experience for the user and gives a lot of replayability.
 
 ## Minor Features
 
 - Player name being recorded
 - Dynamic and changing chip count based on player win or lose
 - color coded UI for easier readability
-- The ability to exit at anytime once gotton into the main game loop
+- The ability to exit at anytime once in the main game loop
 - The use of 'emojis' to add character and flavour
 - Try and except blocks throughout the code to catch invalid inputs       
  
 # Help Documentation
 
 ## How to play Blackjack
-Blackjack is a casino game where your aim is to be closer to the number 21, blackjack, as the dealer. As the player you have 2-3 option each round in a hand. To hit, to gain an extra card and add that cards value to your total value. To stand, to sit on your current value and forfiet the ability to make any further moves in the current hand. Surrender is only available during the first round of a hand and is used to purposely lose in order to gain back half of your betted chip.
+Blackjack is a casino game where your aim is to be closer to the number 21, blackjack, as the dealer. As the player you have 2-3 option each round in a hand. To hit, to gain an extra card and add that cards value to your total value. To stand, to sit on your current value and forfeit the ability to make any further moves in the current hand. Surrender is only available during the first round of a hand and is used to purposely lose in order to gain back half of your betted chip.
 
 ## Steps To Install
-The src code comes with 3 seperate bash files 2 for depending on you operating system and a third that named 'make_exe.sh' that creates an exe located in the folder dist that the bash file creates. For the other bash files; Open VS code in the directory where they are located type in 'sh run_blackjack_windows.sh' or 'sh run_blackjack_mac.sh' depending on your OS and the bash script will run and install all the needed packages from the 'requirements.txt' file and will run within the terminal on vscode.
+The src code comes with 3 separate bash files 2 for depending on you operating system and a third that named 'make_exe.sh' that creates an exe located in the folder dist that the bash file creates. For the other bash files; Open VS code in the directory where they are located type in 'sh run_blackjack_windows.sh' or 'sh run_blackjack_mac.sh' depending on your OS and the bash script will run and install all the needed packages from the 'requirements.txt' file and will run within the terminal on vscode.
 
 
 ## Commands
@@ -301,7 +301,7 @@ As specified before the entire game is played through the command line using key
 - random package
 
 # Project Management
-When looking for resources to do project management alot of websites used a kanban layout. Personally I found kanban layout a bit hard to read. I found a website called 'height' that allowed for 4 serpate views; Spreadsheet, Kanban, Calender and Gantt. 'height also allows me to export the project as seen as a csv and allows me to give other people access to the project. The CSV import and some associated screenshots are the main way I decided to prove use of project management being used throught the creation of the app.
+When looking for resources to do project management a lot of websites used a Kanban layout. Personally I found Kanban layout a bit hard to read. I found a website called 'height' that allowed for 4 separate views; Spreadsheet, Kanban, Calender and Gantt. 'height also allows me to export the project as seen as a csv and allows me to give other people access to the project. The CSV import and some associated screenshots are the main way I decided to prove use of project management being used through out the creation of the app.
 ### Screenshots
 
 ![image](./project%20managment%20proof/pythoncodedone%20img.PNG)
@@ -433,6 +433,7 @@ When looking for resources to do project management alot of websites used a kanb
 ```
 
 ### Readme Nearly Done
+```
 "Tasks","Status","Assignees","Lists"
 "Python Code","Done","","#terminal-app-blackjack"
 "Other Criteria","Done","","#terminal-app-blackjack"
@@ -474,3 +475,4 @@ When looking for resources to do project management alot of websites used a kanb
 "20+ Commits","Done","","#terminal-app-blackjack"
 "Extra Stuff","To do","","#terminal-app-blackjack"
 "Create leaderboard using .csv file","To do","","#terminal-app-blackjack"
+```
