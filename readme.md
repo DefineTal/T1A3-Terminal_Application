@@ -131,7 +131,7 @@ rules = ("Your aim is to be closer to the number 21,"
         "to gain back half of the betted chips and lose the round."
         "The value of the cards are: ")
 ```
-E712 focused on the wording used in an if true statement. The specific example initially had the the equality identifier (==) and was checking if the variable 'round start' was equal to true. Pep8 doesn't like this and prefers the 'is' comparison singleton. This way of avoids potential issues in regards to object ident.ity
+E712 focused on the wording used in an 'if true' statement. The specific error initially had the the equality identifier (==) and was checking if the variable 'round start' was equal to true. Pep8 doesn't like this and prefers the 'is' comparison singleton. This way avoids potential issues in regards to object identity.
 
 ---
 
@@ -145,11 +145,11 @@ if roundstart is True:
 ```
 ---
 
-E231 is an error regarding me missing a space after a comma. Usually I do this automatically but there are points in which I do miss it occasionally. This does highlight the use of programs such as flake8 that act like a code proof reader to find things that you miss.
+E231 is an error regarding missing a space after a comma. Usually I do this automatically but there are points in which I do miss it occasionally. This does highlight the use of programs such as flake8 that act like a code proof reader to find things that you miss.
 
-E303 is flagged is I leave too many blank lines between statements of code. Keeping a consistent number of lines improves the readability of code immensely.
+E303 is flagged if I leave too many blank lines between statements of code. Keeping a consistent number of lines improves the readability of code immensely.
 
-W292 much like its brother W291 and W293 confused me on why it recommended by the pep8 styling guide. After some quick searching I had found out that within the UNIX and Linux ecosystem it expects text files to end in a newline. This convention is still used today and the reason why pep8 recommended it.
+W292 much like its brother W291 and W293 confused me on why it recommended by the pep8 styling guide. After some quick searching I had found out that within  UNIX and Linux ecosystems it expects text files to end in a newline. This convention is still used today and the reason why pep8 recommended it.
 
 
 
@@ -307,6 +307,7 @@ When looking for resources to do project management a lot of websites used a Kan
 ![image](./project%20managment%20proof/pythoncodedone%20img.PNG)
 ![image](./project%20managment%20proof/readmestart%20img.PNG)
 ![image](./project%20managment%20proof/readme%20nearly%20done%20mimg.PNG)
+![image](./project%20managment%20proof/project%20management%20done.PNG)
 
 
 ### CSV
@@ -432,7 +433,7 @@ When looking for resources to do project management a lot of websites used a Kan
 "Create leaderboard using .csv file","To do","","#terminal-app-blackjack"
 ```
 
-### Readme Nearly Done
+#### Readme Nearly Done
 ```
 "Tasks","Status","Assignees","Lists"
 "Python Code","Done","","#terminal-app-blackjack"
@@ -476,3 +477,25 @@ When looking for resources to do project management a lot of websites used a Kan
 "Extra Stuff","To do","","#terminal-app-blackjack"
 "Create leaderboard using .csv file","To do","","#terminal-app-blackjack"
 ```
+
+#### Readme Done
+```
+"Tasks","Status","Assignees","Lists"
+"Extra Stuff","To do","","#terminal-app-blackjack"
+"Create leaderboard using .csv file","To do","","#terminal-app-blackjack"
+```
+## Flowchart
+![image](./project%20managment%20proof/Blackjack%20Flowchart.png)
+
+# Links
+### Repository
+- https://github.com/DefineTal/T1A3-Terminal_Application
+
+### Project Management Link
+- https://height.app/rxNC-k-ciG/terminal-app-blackjack
+
+### Presentation
+- https://youtu.be/Ggvge8iYvNI
+
+# References
+- PEP 8 – Style Guide for Python Code. Available at: https://peps.python.org/pep-0008/
